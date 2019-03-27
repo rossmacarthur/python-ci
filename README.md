@@ -1,6 +1,6 @@
 # ci
 
-Easily run common CI tasks in Python
+Easily run common CI tasks in Python.
 
 ## Getting started
 
@@ -12,16 +12,28 @@ pip install ci
 
 ## Example usage
 
-Run `pip install codecov` only when we are using Python 3.7
+Here are some examples of how you would use the `ci` tool.
 
-```bash
-ci --only 3.7 pip install codecov
+Run `flake8` on Python 2.7 only
+```
+ci --skip 2.7 flake8
 ```
 
-Run `flake8` on all Python versions except `2.7`
+Run `pip install codecov` on Python 3.x.x only
+```
+ci --only 3 pip install codecov
+```
 
-```bash
-ci --skip 2.7 flake8
+Run `codecov` on Python 3.7.2 only
+```
+ci --only 3.7.2 codecov
+```
+
+If for some reason you are running a command that takes the same options as this
+tool then you can use two dashes `--` to specify that this tool should no longer
+match options:
+```
+ci --only 3 -- git --version
 ```
 
 ## License
