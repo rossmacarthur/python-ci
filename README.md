@@ -1,5 +1,9 @@
 # ci
 
+[![PyPI Version](https://img.shields.io/pypi/v/ci.svg?style=flat-square&colorB=4c1)][pypi]
+[![Build Status](https://img.shields.io/travis/rossmacarthur/python-ci/master.svg?style=flat-square)][travis]
+[![Code Coverage](https://img.shields.io/codecov/c/github/rossmacarthur/python-ci.svg?style=flat-square)][codecov]
+
 Easily run common CI tasks in Python.
 
 ## Getting started
@@ -41,3 +45,6 @@ ci --only 3 -- git --version
 This project is licensed under the MIT License. See the [LICENSE] file.
 
 [LICENSE]: LICENSE
+[pypi]: https://pypi.org/project/ci/
+[travis]: https://travis-ci.org/rossmacarthur/python-ci
+[codecov]: https://codecov.io/gh/rossmacarthur/python-ci
