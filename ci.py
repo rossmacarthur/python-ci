@@ -11,7 +11,7 @@ import click
 
 
 __title__ = 'ci'
-__version__ = '0.1.0'
+__version__ = '0.1.1'
 __url__ = 'https://github.com/rossmacarthur/python-ci'
 __author__ = 'Ross MacArthur'
 __author_email__ = 'ross@macarthur.io'
