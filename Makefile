@@ -1,4 +1,4 @@
-VIRTUAL_ENV := $(or $(VIRTUAL_ENV), $(VIRTUAL_ENV), venv)
+PYTHON := python3
 
 .PHONY: help
 help: ## Show this message and exit.
@@ -10,12 +10,23 @@ clean: ## Remove all build artifacts.
 	rm -rf build dist wheels
 	find . \( -name *.pyc -o -name *.pyo -o -name __pycache__ -o -name *.egg-info \) -exec rm -rf {} +
 
+.PHONY: venv
+ifeq ($(strip $(VIRTUAL_ENV)),)
+export VIRTUAL_ENV := venv
+venv: ## Create a virtualenv.
+	rm -rf venv
+	$(PYTHON) -m venv venv
+else
+venv:
+	@echo "Not creating virtualenv because VIRTUAL_ENV is set."
+endif
+
 .PHONY: install
-install: ## Install package.
+install: venv ## Install package.
 	$(VIRTUAL_ENV)/bin/pip install -e .
 
 .PHONY: install-dev
-install-dev: ## Install package and linting and testing dependencies.
+install-dev: venv ## Install package and linting and testing dependencies.
 	$(VIRTUAL_ENV)/bin/pip install -e ".[dev.lint,dev.test]"
 
 .PHONY: install-all
@@ -27,7 +38,7 @@ lint: ## Run all lints.
 	$(VIRTUAL_ENV)/bin/flake8 --max-complexity 10 .
 
 .PHONY: sort-imports
-sort-imports: ## Sort import statements according to isort configuration.
+sort-imports: ## Sort import statements according to the isort configuration.
 	$(VIRTUAL_ENV)/bin/isort --recursive .
 
 .PHONY: test

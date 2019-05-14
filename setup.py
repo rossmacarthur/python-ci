@@ -21,7 +21,7 @@ def get_metadata():
         about_text = f.read()
 
     metadata = {
-        key: re.search(r'__' + key + r'__ = ["\'](.*?)["\']', about_text).group(1)
+        key: re.search(r'__' + key + r"__ = '(.*?)'", about_text).group(1)
         for key in ('title', 'version', 'url', 'author', 'author_email', 'license', 'description')
     }
     metadata['name'] = metadata.pop('title')
@@ -37,7 +37,7 @@ metadata = get_metadata()
 
 # Primary requirements
 install_requires = [
-    'click >=7.0'
+    'click'
 ]
 entry_points = {
     'console_scripts': [
@@ -48,8 +48,11 @@ entry_points = {
 # Development requirements
 lint_requires = [
     'flake8 >=3.7.0',
+    'flake8-comprehensions',
     'flake8-docstrings',
     'flake8-isort',
+    'flake8-mutable',
+    'flake8-pep3101',
     'flake8-quotes',
     'pep8-naming'
 ]
@@ -67,8 +70,8 @@ setup(
         'dev.test': test_requires
     },
     python_requires='>=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*',
-    entry_points=entry_points,
     py_modules=['ci'],
+    entry_points=entry_points,
 
     # Metadata
     download_url='{url}/archive/{version}.tar.gz'.format(**metadata),

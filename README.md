@@ -4,7 +4,7 @@
 [![Build Status](https://img.shields.io/travis/rossmacarthur/python-ci/master.svg?style=flat-square)][travis]
 [![Code Coverage](https://img.shields.io/codecov/c/github/rossmacarthur/python-ci.svg?style=flat-square)][codecov]
 
-Easily run common CI tasks in Python.
+Easily run common CI tasks for Python builds.
 
 ## Getting started
 

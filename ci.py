@@ -1,5 +1,7 @@
 """
-The ci command line interface.
+ci
+
+Easily run common CI tasks for Python builds.
 """
 
 import platform
@@ -14,7 +16,7 @@ __url__ = 'https://github.com/rossmacarthur/python-ci'
 __author__ = 'Ross MacArthur'
 __author_email__ = 'ross@macarthur.io'
 __license__ = 'MIT'
-__description__ = 'Easily run common CI tasks in Python'
+__description__ = 'Easily run common CI tasks for Python builds.'
 
 
 def info(message):
